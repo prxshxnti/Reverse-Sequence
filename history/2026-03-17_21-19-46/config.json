@@ -1,0 +1,21 @@
+{
+    "VERSION": "2026-03-17_21-19-46",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 10,
+    "BATCH_SIZE": 64,
+    "EMBEDDING_DIM": 64,
+    "HIDDEN_SIZE": 128,
+    "TRAINING_SAMPLES": 2500,
+    "TRAINING_SEQ_LEN": 15,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 15,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 15,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.001,
+    "OPTIMIZER_FN": "ADAM",
+    "MODEL_CLASS": "ReverseTaskV0",
+    "REASON": "RNN at 15 len sequences",
+    "ATTENTION_SIZE": 128
+}

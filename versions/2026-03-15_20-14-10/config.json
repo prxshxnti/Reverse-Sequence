@@ -1,0 +1,20 @@
+{
+    "VERSION": "2026-03-15_20-14-10",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 10,
+    "BATCH_SIZE": 64,
+    "EMBEDDING_DIM": 64,
+    "HIDDEN_SIZE": 128,
+    "TRAINING_SAMPLES": 2000,
+    "TRAINING_SEQ_LEN": 10,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 15,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 15,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.1,
+    "OPTIMIZER_FN": "SGD",
+    "MODEL_CLASS": "ReverseTaskV2",
+    "REASON": "Version 2 GRU : Reducing epochs since last run was over-trained "
+}

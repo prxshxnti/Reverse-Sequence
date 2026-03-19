@@ -1,0 +1,21 @@
+{
+    "VERSION": "2026-03-15_19-23-04",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 20,
+    "BATCH_SIZE": 64,
+    "EMBEDDING_DIM": 64,
+    "HIDDEN_SIZE": 128,
+    "TRAINING_SAMPLES": 2000,
+    "TRAINING_SEQ_LEN": 7,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 7,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 7,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.1,
+    "OPTIMIZER_FN": "SGD",
+    "MODEL_CLASS": "ReverseTaskV0",
+    "REASON": "Changed params embedding dim, batch size, hidden size : Results -> Started seeing Seq accuracy for the first time
+    Token acc reached 0.6. And in the inference, it remembered more than one token"
+}

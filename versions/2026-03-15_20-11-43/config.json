@@ -1,0 +1,20 @@
+{
+    "VERSION": "2026-03-15_20-11-43",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 20,
+    "BATCH_SIZE": 64,
+    "EMBEDDING_DIM": 64,
+    "HIDDEN_SIZE": 128,
+    "TRAINING_SAMPLES": 2000,
+    "TRAINING_SEQ_LEN": 10,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 15,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 15,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.1,
+    "OPTIMIZER_FN": "SGD",
+    "MODEL_CLASS": "ReverseTaskV2",
+    "REASON": "Upgrading to version 2 architecture GRU -> token accuracy went from 1.4 to 1.5. And loss curves diverged"
+}

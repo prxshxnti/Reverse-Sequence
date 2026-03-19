@@ -1,0 +1,21 @@
+{
+    "VERSION": "2026-03-15_20-02-34",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 20,
+    "BATCH_SIZE": 64,
+    "EMBEDDING_DIM": 64,
+    "HIDDEN_SIZE": 128,
+    "TRAINING_SAMPLES": 2000,
+    "TRAINING_SEQ_LEN": 10,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 15,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 15,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.1,
+    "OPTIMIZER_FN": "SGD",
+    "MODEL_CLASS": "ReverseTaskV1",
+    "REASON": "Upgrading to version 1 architecture LSTM -> Loss curves didn't diverge since last run.
+    Loss reduced but Token acc reduced from 0.17 to 0.14 which is Worse. Model improved in loss aspect but didn't work in accuracy aspect"
+}

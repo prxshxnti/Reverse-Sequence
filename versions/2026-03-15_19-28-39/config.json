@@ -1,0 +1,21 @@
+{
+    "VERSION": "2026-03-15_19-28-39",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 20,
+    "BATCH_SIZE": 64,
+    "EMBEDDING_DIM": 64,
+    "HIDDEN_SIZE": 128,
+    "TRAINING_SAMPLES": 2000,
+    "TRAINING_SEQ_LEN": 7,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 10,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 10,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.1,
+    "OPTIMIZER_FN": "SGD",
+    "MODEL_CLASS": "ReverseTaskV0",
+    "REASON": "Increasing sequences to make the model (RNN fail) for longer sequences than it was trained. Changing only the eval seq len
+    -> Result is Model overfitted. Train loss decreased but val loss increased"
+}

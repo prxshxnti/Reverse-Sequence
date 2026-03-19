@@ -1,0 +1,20 @@
+{
+    "VERSION": "2026-03-15_17-55-02",
+    "VOCAB_SIZE": 20,
+    "NUM_EPOCHS": 20,
+    "BATCH_SIZE": 32,
+    "EMBEDDING_DIM": 32,
+    "HIDDEN_SIZE": 16,
+    "TRAINING_SAMPLES": 1000,
+    "TRAINING_SEQ_LEN": 7,
+    "VALIDATION_SAMPLES": 500,
+    "VALIDATION_SEQ_LEN": 7,
+    "TEST_SAMPLES": 200,
+    "TEST_SEQ_LEN": 7,
+    "SOS": 18,
+    "EOS": 19,
+    "LEARNING_RATE": 0.1,
+    "OPTIMIZER_FN": "ADAM",
+    "MODEL_CLASS": "ReverseTaskV0",
+    "REASON": "Used Adam Optimizer"
+}

@@ -1,0 +1,33 @@
+2026-03-15 09:07:37,416 | INFO | X_train shape : torch.Size([1000, 7]), y_train_inp shape : torch.Size([1000, 8]), y_train_targets shape : torch.Size([1000, 8]),X_val shape : torch.Size([500, 7]), y_val_inp shape : torch.Size([500, 8]), y_val_targets shape : torch.Size([500, 8]),X_test shape : torch.Size([200, 7]), y_test_inp shape : torch.Size([200, 8]),  y_test_targets shape : torch.Size([200, 8]) 
+2026-03-15 09:07:38,059 | INFO | ============================================================
+2026-03-15 09:07:38,060 | INFO | Before Training 
+2026-03-15 09:07:38,070 | INFO | Enc Input : tensor([[15, 14, 16,  7, 18,  4,  1]]), Dec Input : tensor([[18,  1,  4, 18,  7, 16, 14, 15]]), Dec Target: tensor([[ 1,  4, 18,  7, 16, 14, 15, 19]])
+2026-03-15 09:07:38,082 | INFO | Model's Prediction tensor([[17,  9,  5, 17, 17, 10,  5,  9]])
+2026-03-15 09:07:38,082 | INFO | ============================================================
+2026-03-15 09:07:38,162 | INFO | Epoch : 1 / 20 , Train Loss : 3.040, Validation Loss : 3.005 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,202 | INFO | Epoch : 2 / 20 , Train Loss : 2.976, Validation Loss : 2.958 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,243 | INFO | Epoch : 3 / 20 , Train Loss : 2.933, Validation Loss : 2.925 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,284 | INFO | Epoch : 4 / 20 , Train Loss : 2.901, Validation Loss : 2.898 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,324 | INFO | Epoch : 5 / 20 , Train Loss : 2.871, Validation Loss : 2.867 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,363 | INFO | Epoch : 6 / 20 , Train Loss : 2.834, Validation Loss : 2.825 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,404 | INFO | Epoch : 7 / 20 , Train Loss : 2.789, Validation Loss : 2.781 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,444 | INFO | Epoch : 8 / 20 , Train Loss : 2.745, Validation Loss : 2.744 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,485 | INFO | Epoch : 9 / 20 , Train Loss : 2.718, Validation Loss : 2.716 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,526 | INFO | Epoch : 10 / 20 , Train Loss : 2.695, Validation Loss : 2.719 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,565 | INFO | Epoch : 11 / 20 , Train Loss : 2.669, Validation Loss : 2.662 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,605 | INFO | Epoch : 12 / 20 , Train Loss : 2.655, Validation Loss : 2.708 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,646 | INFO | Epoch : 13 / 20 , Train Loss : 2.635, Validation Loss : 2.607 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,686 | INFO | Epoch : 14 / 20 , Train Loss : 2.615, Validation Loss : 2.616 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,726 | INFO | Epoch : 15 / 20 , Train Loss : 2.601, Validation Loss : 2.584 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,769 | INFO | Epoch : 16 / 20 , Train Loss : 2.577, Validation Loss : 2.570 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,810 | INFO | Epoch : 17 / 20 , Train Loss : 2.570, Validation Loss : 2.589 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,850 | INFO | Epoch : 18 / 20 , Train Loss : 2.552, Validation Loss : 2.568 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,889 | INFO | Epoch : 19 / 20 , Train Loss : 2.538, Validation Loss : 2.543 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,928 | INFO | Epoch : 20 / 20 , Train Loss : 2.512, Validation Loss : 2.497 Train Acc : 0.000, Validation Acc : 0.000
+2026-03-15 09:07:38,928 | INFO | ============================================================
+2026-03-15 09:07:38,928 | INFO | After Training 
+2026-03-15 09:07:38,929 | INFO | Enc Input : tensor([[15, 14, 16,  7, 18,  4,  1]]), Dec Input : tensor([[18,  1,  4, 18,  7, 16, 14, 15]]), Dec Target: tensor([[ 1,  4, 18,  7, 16, 14, 15, 19]])
+2026-03-15 09:07:38,929 | INFO | Model's Prediction tensor([[ 1, 15,  1,  1,  3,  4, 19, 19]])
+2026-03-15 09:07:38,929 | INFO | ============================================================
+2026-03-15 09:07:38,932 | INFO | Test Loss : 2.503, Test Acc : 0.000
+2026-03-15 09:08:04,419 | INFO | Inference for tensor([[ 5,  3,  9, 10,  2]]) :: Model's Predictions [2, 6, 8, 11, 1, 3]

@@ -1,0 +1,23 @@
+2026-03-15 20:15:37,588 | INFO | X_train shape : torch.Size([2500, 10]), y_train_inp shape : torch.Size([2500, 11]), y_train_targets shape : torch.Size([2500, 11]),X_val shape : torch.Size([500, 15]), y_val_inp shape : torch.Size([500, 16]), y_val_targets shape : torch.Size([500, 16]),X_test shape : torch.Size([200, 15]), y_test_inp shape : torch.Size([200, 16]),  y_test_targets shape : torch.Size([200, 16]) 
+2026-03-15 20:15:38,200 | INFO | ============================================================
+2026-03-15 20:15:38,200 | INFO | Before Training 
+2026-03-15 20:15:38,212 | INFO | Enc Input : tensor([[ 8,  8,  5,  8, 18, 11, 12,  5,  1,  5]]), Dec Input : tensor([[18,  5,  1,  5, 12, 11, 18,  8,  5,  8,  8]]), Dec Target: tensor([[ 5,  1,  5, 12, 11, 18,  8,  5,  8,  8, 19]])
+2026-03-15 20:15:38,232 | INFO | Model's Prediction tensor([[15, 12, 12, 12, 19, 19, 15, 17, 17, 17, 17]])
+2026-03-15 20:15:38,232 | INFO | ============================================================
+2026-03-15 20:15:38,613 | INFO | Epoch : 1 / 10 , Train Loss : 2.976, Validation Loss : 2.975 Train Token Accuracy : 0.085, Val Token Accuracy : 0.069 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:38,958 | INFO | Epoch : 2 / 10 , Train Loss : 2.937, Validation Loss : 2.960 Train Token Accuracy : 0.117, Val Token Accuracy : 0.089 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:39,300 | INFO | Epoch : 3 / 10 , Train Loss : 2.913, Validation Loss : 2.949 Train Token Accuracy : 0.145, Val Token Accuracy : 0.098 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:39,638 | INFO | Epoch : 4 / 10 , Train Loss : 2.894, Validation Loss : 2.939 Train Token Accuracy : 0.156, Val Token Accuracy : 0.116 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:43,719 | INFO | Epoch : 5 / 10 , Train Loss : 2.876, Validation Loss : 2.930 Train Token Accuracy : 0.176, Val Token Accuracy : 0.124 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:44,091 | INFO | Epoch : 6 / 10 , Train Loss : 2.858, Validation Loss : 2.921 Train Token Accuracy : 0.189, Val Token Accuracy : 0.132 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:44,525 | INFO | Epoch : 7 / 10 , Train Loss : 2.837, Validation Loss : 2.909 Train Token Accuracy : 0.199, Val Token Accuracy : 0.139 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:44,867 | INFO | Epoch : 8 / 10 , Train Loss : 2.814, Validation Loss : 2.900 Train Token Accuracy : 0.205, Val Token Accuracy : 0.144 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:45,504 | INFO | Epoch : 9 / 10 , Train Loss : 2.789, Validation Loss : 2.897 Train Token Accuracy : 0.210, Val Token Accuracy : 0.147 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:48,655 | INFO | Epoch : 10 / 10 , Train Loss : 2.757, Validation Loss : 2.889 Train Token Accuracy : 0.217, Val Token Accuracy : 0.148 Train Seq Accuracy : 0.000, Val Seq Accuracy : 0.000
+2026-03-15 20:15:48,655 | INFO | ============================================================
+2026-03-15 20:15:48,655 | INFO | After Training 
+2026-03-15 20:15:48,657 | INFO | Enc Input : tensor([[ 8,  8,  5,  8, 18, 11, 12,  5,  1,  5]]), Dec Input : tensor([[18,  5,  1,  5, 12, 11, 18,  8,  5,  8,  8]]), Dec Target: tensor([[ 5,  1,  5, 12, 11, 18,  8,  5,  8,  8, 19]])
+2026-03-15 20:15:48,658 | INFO | Model's Prediction tensor([[ 5,  5,  5,  5,  3, 19,  5, 19, 19, 19, 19]])
+2026-03-15 20:15:48,658 | INFO | ============================================================
+2026-03-15 20:15:48,677 | INFO | Test Loss : 2.896, Test Token Acc : 0.148, Test Seq Acc : 0.000
+2026-03-15 20:16:04,676 | INFO | Inference for tensor([[ 5,  3,  9, 10,  2]]) :: Model's Predictions [2, 2, 3, 11, 16]
