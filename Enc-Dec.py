@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader, TensorDataset
 import torch.nn as nn
 import logging
 import sys
+from transformers import Transformer
 import os
 
 #Observed Maximum strength of RNN : 2026-03-15_19-23-04 [ Used only small sequences, len 7 for train, val, test ]
@@ -28,7 +29,7 @@ import os
 #2026-03-17_15-01-33 using bahdanu attention - Test Loss : 0.008, Test Token Acc : 1.000, Test Seq Acc : 1.000
 
 #PARAMETERS
-REASON = "Luong dot attention 20 len sequences"
+REASON = "Transformer from scratch and fixed some mistakes "
 
 VERSION = time.strftime("%Y-%m-%d_%H-%M-%S")
 VOCAB_SIZE = 20
@@ -41,6 +42,8 @@ ATTENTION_SIZE = 128
 TRAINING_SAMPLES, TRAINING_SEQ_LEN = 2500, 20
 VALIDATION_SAMPLES, VALIDATION_SEQ_LEN = 500, 20
 TEST_SAMPLES, TEST_SEQ_LEN = 200, 20
+
+MAX_LEN = max(TRAINING_SEQ_LEN, max(VALIDATION_SEQ_LEN, TEST_SEQ_LEN))
 
 SOS, EOS = VOCAB_SIZE - 2, VOCAB_SIZE - 1
 
@@ -56,7 +59,7 @@ logging.basicConfig(
     format="%(asctime)s | %(levelname)s | %(message)s",
     handlers=[
         logging.StreamHandler(sys.stdout),  # console
-        logging.FileHandler(f"{DIR_PATH}/{VERSION}/app.log")  # file
+        # logging.FileHandler(f"{DIR_PATH}/{VERSION}/app.log")  # file
     ]
 )
 
@@ -114,7 +117,6 @@ train_dataset = TensorDataset(X_train, y_train_inp, y_train_targets)
 val_dataset = TensorDataset(X_val, y_val_inp, y_val_targets)
 test_dataset = TensorDataset(X_test, y_test_inp, y_test_targets)
 
-
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)
 test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
@@ -147,7 +149,7 @@ def plot_grad_flow(named_parameters, epoch):
     plt.title(f"Gradient Flow Across Layers for Epoch {epoch}")
     plt.legend()
     plt.tight_layout()
-    plt.savefig(f"{DIR_PATH}/{VERSION}/{epoch}_gradient_plot.png")
+    # plt.savefig(f"{DIR_PATH}/{VERSION}/{epoch}_gradient_plot.png")
     plt.show()
 
 class ReverseTaskV0(nn.Module):
@@ -457,7 +459,44 @@ class ReverseTaskV8(nn.Module):
 
         return torch.cat(outputs, dim=1)
 
-model = ReverseTaskV8()
+class ReverseTaskV9(nn.Module):
+    """
+    Transformer architecture from "Attention is all you need" paper using pre-built transformer blocks
+    """
+    def __init__(self, d_model):
+        super().__init__()
+        self.input_embeddings = nn.Embedding(VOCAB_SIZE, d_model)
+        self.pos_input_embeddings = nn.Embedding(MAX_LEN, d_model)
+        self.encoder_layer = nn.TransformerEncoderLayer(d_model=d_model, nhead=4, dim_feedforward=128, batch_first=True)
+        self.encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=2)
+
+        self.output_embeddings = nn.Embedding(VOCAB_SIZE, d_model)
+        self.pos_output_embeddings = nn.Embedding(MAX_LEN + 1, d_model)
+        self.decoder_layer = nn.TransformerDecoderLayer(d_model=d_model, nhead=4, dim_feedforward=128, batch_first=True)
+        self.decoder = nn.TransformerDecoder(self.decoder_layer, num_layers=2)
+
+        self.output_layer = nn.Linear(d_model, VOCAB_SIZE)
+
+    def forward(self, enc_inps, dec_inps):
+        B, S = enc_inps.shape  # S - source seq len
+        enc_position_ids = torch.arange(0, S).unsqueeze(0).repeat(B, 1)
+        enc_token_embeddings = self.input_embeddings(enc_inps) # (B, S) -> (B, S, D )
+        enc_pos_embeddings = self.pos_input_embeddings(enc_position_ids) # (B, S) -> ( B, S, D)
+        enc_embeddings = enc_token_embeddings + enc_pos_embeddings # ( B, S, D ) + ( B, S, D ) = ( B, S, D)
+        enc_outputs = self.encoder(enc_embeddings) # (B, S, D)
+
+        B, T = dec_inps.shape #T - Target seq len
+        dec_position_ids = torch.arange(0, T).unsqueeze(0).repeat(B, 1)
+        dec_token_embeddings = self.output_embeddings(dec_inps) # (B, T) -> (B, T, D)
+        dec_pos_embeddings = self.pos_output_embeddings(dec_position_ids) # (B, T) -> (B, T, D)
+        dec_embeddings = dec_token_embeddings + dec_pos_embeddings  # ( B, T, D ) + ( B, T, D ) = ( B, T, D)
+        tgt_mask = nn.Transformer.generate_square_subsequent_mask(T)
+        dec_outputs = self.decoder(dec_embeddings, enc_outputs, tgt_mask = tgt_mask) # ( B, T, D), (B, S, D) -> ( B, T, D)
+
+        logits = self.output_layer(dec_outputs) # ( B, T, D) -> (B, T, V)
+        return logits
+
+model = Transformer(VOCAB_SIZE, EMBEDDING_DIM, EMBEDDING_DIM, 256, 256, MAX_LEN, MAX_LEN+1, 4, 2)
 loss_fn = nn.CrossEntropyLoss()
 optimizer = None
 if OPTIMIZER_FN == "SGD":
@@ -651,7 +690,7 @@ if __name__ == "__main__":
                 d_inp = torch.cat([d_inp, last_timestep], dim=-1)
         return generated
 
-    enc_inp = torch.tensor([[5, 3, 9, 10, 2]])
+    enc_inp = torch.tensor([[5, 3, 9, 10, 2, 15, 7, 9, 13, 12, 1, 4, 8, 2, 2, 5, 11, 14, 16, 17]])
     predictions = generate(model, enc_inp)
     LOGGER.info(f"Inference for {enc_inp} :: Model's Predictions {predictions}")
 
